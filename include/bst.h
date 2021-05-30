@@ -78,7 +78,7 @@ return p;
 }
 Node * insert(Node * p, T k) {
 if (!p) return new Node(k);
-if (k->value < p->value)
+if (k < p->value)
 p->left = insert(p->left, k);
 else
 p->right = insert(p->right, k);
