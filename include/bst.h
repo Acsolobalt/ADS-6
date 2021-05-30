@@ -3,11 +3,10 @@
 #define INCLUDE_BST_H_
 
 template < typename T >
-class BST
-{
+class BST {
+
 public:
-struct Node
-{
+struct Node {
 T value;
 int count;
 Node * left;
@@ -15,6 +14,7 @@ Node * right;
 unsigned char height;
 Node(T k) : value(k), left(nullptr), right(nullptr), height(1), count(1) {}
 };
+
 private:
 Node * root;
 int depthTree(Node * root) {
@@ -36,18 +36,18 @@ return searchNode(root->left, value);
 else
 return searchNode(root->right, value);
 }
-unsigned char height(Node * p) { // селектор высоты
+unsigned char height(Node * p) {
 return p ? p->height :0;
 }
-int bfactor(Node * p) { // вычисление баланса узла
+int bfactor(Node * p) {
 return height(p->right) - height(p->left);
 }
-void fixheight(Node * p) { // установка поля высоты узла
+void fixheight(Node * p) {
 unsigned char hl = height(p->left);
 unsigned char hr = height(p->right);
 p->height = (hl > hr ? hl : hr) + 1;
 }
-Node * rotateright(Node * p) { // правый поворот вокруг p
+Node * rotateright(Node * p) {
 Node * q = p->left;
 p->left = q->right;
 q->right = p;
@@ -55,7 +55,7 @@ fixheight(p);
 fixheight(q);
 return q;
 }
-Node * rotateleft(Node * q) { // левый поворот вокруг q
+Node * rotateleft(Node * q) {
 Node* p = q->right;
 q->right = p->left;
 p->left = q;
@@ -63,23 +63,21 @@ fixheight(q);
 fixheight(p);
 return p;
 }	
-Node * balance(Node * p) { // балансировка узла p
+Node * balance(Node * p) {
 fixheight(p);
-if (bfactor(p) == 2)
-{
+if (bfactor(p) == 2) {
 if (bfactor(p->right) < 0)
 p->right = rotateright(p->right);
 return rotateleft(p);
 }
-if (bfactor(p) == −2)
-{
+if (bfactor(p) == −2) {
 if (bfactor(p->left) > 0)
 p->left = rotateleft(p->left);
 return rotateright(p);
 }
-return p; // балансировка не нужна
+return p;
 }	
-Node * insert(Node * p, T k) { // вставка ключа k в дерево с корнем p
+Node * insert(Node * p, T k) {
 if (!p) return new Node(k);
 if (k <p−>key)
 p->left = insert(p->left, k);
@@ -87,6 +85,7 @@ else
 p->right = insert(p->right, k);
 return balance(p);
 }
+
 public:
 BST() : root(nullptr) {}
 ~BST() {
