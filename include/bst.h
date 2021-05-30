@@ -20,8 +20,8 @@ int depthTree(Node * root) {
 if (root == nullptr) {
 return 0;
 } else {
-lh = depthTree(root->left);
-rh = depthTree(root->right);
+int lh = depthTree(root->left);
+int rh = depthTree(root->right);
 return (lh > rh ? lh : rh) + 1;
 }
 }
@@ -29,8 +29,8 @@ int searchNode(Node * root, T value) {
 if (root == nullptr)
 return 0;
 else if (root->value == value)
-return count;
-else if (value < root−>value)
+return root->count;
+else if (value < root->value)
 return searchNode(root->left, value);
 else
 return searchNode(root->right, value);
@@ -69,7 +69,7 @@ if (bfactor(p->right) < 0)
 p->right = rotateright(p->right);
 return rotateleft(p);
 }
-if (bfactor(p) == −2) {
+if (bfactor(p) == -2) {
 if (bfactor(p->left) > 0)
 p->left = rotateleft(p->left);
 return rotateright(p);
@@ -78,7 +78,7 @@ return p;
 }
 Node * insert(Node * p, T k) {
 if (!p) return new Node(k);
-if (k <p−>key)
+if (k->key < p->key)
 p->left = insert(p->left, k);
 else
 p->right = insert(p->right, k);
@@ -87,10 +87,6 @@ return balance(p);
 
  public:
 BST() : root(nullptr) {}
-~BST() {
-if (root)
-delTree(root);
-}
 void add(T value) {
 root = insert(root, value);
 }
