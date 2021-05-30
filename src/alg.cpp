@@ -14,16 +14,14 @@ if (!file) {
 std::cout << "File error!" << std::endl;
 return;
 }
-while (!file.eof())
-{
+while (!file.eof()) {
 char ch = file.get();
 if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z') {
 if (ch >= 'A' && ch <= 'Z') {
 ch += changeSize;
 }
 keyword += ch;
-}
-else {
+} else {
 if (keyword != "") {
 tree.add(keyword);
 keyword = "";
