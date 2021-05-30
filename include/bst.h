@@ -13,7 +13,7 @@ Node * right;
 unsigned char height;
 Node(T k) : value(k), left(nullptr), right(nullptr), height(1), count(1) {}
 };
- 
+
  private:
 Node * root;
 int depthTree(Node * root) {
@@ -84,7 +84,7 @@ else
 p->right = insert(p->right, k);
 return balance(p);
 }
- 
+
  public:
 BST() : root(nullptr) {}
 ~BST() {
