@@ -4,8 +4,7 @@
 
 template < typename T >
 class BST {
-
-public:
+ public:
 struct Node {
 T value;
 int count;
@@ -14,13 +13,12 @@ Node * right;
 unsigned char height;
 Node(T k) : value(k), left(nullptr), right(nullptr), height(1), count(1) {}
 };
-
-private:
+ private:
 Node * root;
 int depthTree(Node * root) {
-if (root == nullptr)
+if (root == nullptr) {
 return 0;
-else {
+} else {
 lh = depthTree(root->left);
 rh = depthTree(root->right);
 return (lh > rh ? lh : rh) + 1;
@@ -85,8 +83,7 @@ else
 p->right = insert(p->right, k);
 return balance(p);
 }
-
-public:
+ public:
 BST() : root(nullptr) {}
 ~BST() {
 if (root)
