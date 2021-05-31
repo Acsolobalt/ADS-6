@@ -53,13 +53,13 @@ return root->count;
  public:
 BST():root(nullptr) {}
 ~BST();
-void add(T) {
+void add(T val) {
 root = addNode(root, val);
 }
 int depth() {
 return depthTree(root);
 }
-int search(T) {
+int search(T val) {
 return searchNode(root, val);
 }
 };
