@@ -52,7 +52,7 @@ return root->count;
 
  public:
 BST():root(nullptr) {}
-~BST();
+~BST() {}
 void add(T val) {
 root = addNode(root, val);
 }
