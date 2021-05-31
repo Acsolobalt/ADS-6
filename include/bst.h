@@ -54,13 +54,13 @@ return root->count;
 BST():root(nullptr) {}
 ~BST();
 void add(T) {
-root = addNode(root, value);
+root = addNode(root, val);
 }
 int depth() {
 return depthTree(root);
 }
 int search(T) {
-return searchNode(root, value);
+return searchNode(root, val);
 }
 };
 
