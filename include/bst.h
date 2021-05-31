@@ -14,7 +14,7 @@ Node* right;
 
  private:
 Node* root;
-Node* addNode(Node*, T) {
+Node* addNode(Node* root, T value) {
 if (root == nullptr) {
 root = new Node;
 root->value = value;
@@ -29,7 +29,7 @@ root->count++;
 }
 return root;
 }
-int depthTree(Node*) {
+int depthTree(Node* root) {
 if (root == nullptr)
 return 0;
 if (root->left == nullptr && root->right == nullptr)
@@ -38,7 +38,7 @@ int depthL = depthTree(root->left);
 int depthR = depthTree(root->right);
 return ((depthL > depthR ? depthL : depthR) + 1);
 }
-int searchNode(Node*, T) {
+int searchNode(Node* root, T value) {
 if (root == nullptr) {
 return 0;
 } else if (root->value > value) {
